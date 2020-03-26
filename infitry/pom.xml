@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.infitry</groupId>
-	<artifactId>base</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>infitry</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>infitry</name>
 	<description>infitry first project Spring boot, CI/CD</description>
 
