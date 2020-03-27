@@ -16,14 +16,26 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		<docker.image.prefix>infitry</docker.image.prefix>
 	</properties>
 
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+	
+		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		
 		<dependency>
@@ -44,6 +56,12 @@
 		</dependency>
 		
 		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>springloaded</artifactId>
+		    <version>1.2.8.RELEASE</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -61,6 +79,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+	                <jvmArguments>
+	                        -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+	                </jvmArguments>
+	            </configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.spotify</groupId>
