@@ -10,7 +10,6 @@ public class NoticeController {
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String main() {
-		System.out.println("notice list");
 		return "/notice/list";
 	}
 }
