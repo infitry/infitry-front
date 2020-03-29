@@ -3,7 +3,32 @@
 	<head th:replace="layouts/fragments/head :: headFragment"></head>
 	<header th:replace="layouts/fragments/header :: headerFragment"></header>
 	<body>
-		<div class="container" layout:fragment="content"></div>
+		<div class="col-md-4 aside">
+			<div class="card my-4">
+				<h5 class="card-header">Categories</h5>
+				<div class="card-body">
+					<div class="row">
+						<ul class="list-unstyled mb-0 pl-1">
+							<li><a href="#">spring boot</a></li>
+							<li><a href="#">JPA</a></li>
+							<li><a href="#">thymeleaf</a></li>
+							<li><a href="#">ubuntu</a></li>
+							<li><a href="#">docker</a></li>
+							<li><a href="#">vue.js</a></li>
+							<li><a href="#">github</a></li>
+							<li><a href="#">dockerhub</a></li>
+							<li><a href="#">Vue.js</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mt-4" layout:fragment="content">
+				</div>
+			</div>
+		</div>
 		<footer th:replace="layouts/fragments/footer :: footerFragment"></footer>
 		<th:block layout:fragment="bodyScript"></th:block>
 	</body>

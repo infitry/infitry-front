@@ -6,3 +6,16 @@
 body {
   padding-top: 56px;
 }
+
+/* 좌측 고정메뉴 */
+.aside {
+	position: fixed;
+	-ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 15%;
+}
+@media (max-width: 1200px) {
+	.aside {
+		display: none;
+	}
+}

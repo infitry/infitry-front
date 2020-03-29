@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/post")
-public class PostController {
+@RequestMapping(value = "/blog-post")
+public class BlogPostController {
 	
 	@RequestMapping(value = "/list")
 	public String list() {
-		return "post/list";
+		return "blog-post/list";
 	}
 	
 	@RequestMapping(value = "/detail")
 	public String detail() {
-		return "post/detail";
+		return "blog-post/detail";
 	}
 }
