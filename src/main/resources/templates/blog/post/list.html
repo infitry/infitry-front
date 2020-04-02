@@ -12,10 +12,10 @@
 				<div class="card-body">
 					<h2 class="card-title">{{ post.subject }}</h2>
 					<p class="card-text">{{ post.contents }}</p>
-					<a href="#" class="btn btn-primary">Read More &rarr;</a>
+					<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);" class="btn btn-primary">Read More &rarr;</a>
 				</div>
 				<div class="card-footer text-muted">
-					{{ post.regDate }} by <a href="#">{{ post.regUser }}</a>
+					{{ post.regDate | dateFormat}} by <a href="#">{{ post.regUser }}</a>
 				</div>
 			</div>
 			<!-- Pagination -->
@@ -37,6 +37,14 @@
 			  		last: false,
 					first: true
 			  	},
+			  	filters: {
+			  		dateFormat: function(value) {
+			  			if (!value) {
+			  				return '';
+			  			}
+			  			return moment(value).format("YYYY .MM .DD");
+			  		}
+			  	},
 			  	methods: {
 			  		getList() {
 			  			 axios.get(this.baseUrl + '?page=' + this.page + '&size=' + this.size)
@@ -48,8 +56,8 @@
 							
 							console.log(response.data);
 			  	        })
-			  	        .catch(response => {
-			  	        	alert(response);
+			  	        .catch(e => {
+			  	        	console.warn('error!!! :' + e);
 			  	        });	
 			  		},
 			  		getNextPage() {
@@ -59,6 +67,9 @@
 			  		getPrevPage() {
 			  			this.page -= 1;
 			  			this.getList();
+			  		},
+			  		readMore(blogPostSeq) {
+			  			location.href = '/blog/post/detail/' + blogPostSeq;
 			  		}
 			  	},
 		  	 	created () {

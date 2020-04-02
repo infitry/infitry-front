@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.infitry.base.entity.BlogPost;
 import com.infitry.base.pageable.RestResponsePage;
 
 @Controller
@@ -51,14 +52,18 @@ public class BlogController {
 			logger.error(e.getMessage());
 			logger.error("BLOG SERVICE NOT AVAILABLE...!!!");
 		}
-		
 		return blogPostList;
 	}
 	
-	
-	
-	@RequestMapping(value = "/post/detail")
-	public String detail() {
+	@RequestMapping(value = "/post/detail/{blogPostSeq}")
+	public String detail(Model model, @PathVariable long blogPostSeq) {
+		try {
+			BlogPost blogPost = blogClient.getForObject(blogUrl + "/blog/post/detail?blogPostSeq=" + blogPostSeq, BlogPost.class);
+			model.addAttribute("blogPost", blogPost);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			logger.error("BLOG SERVICE NOT AVAILABLE...!!!");
+		}
 		return "blog/post/detail";
 	}
 }
