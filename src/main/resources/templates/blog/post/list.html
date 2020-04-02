@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/default-layout">
+	<th:block layout:fragment="css">
+	</th:block>
+	<th:block layout:fragment="script">
+	</th:block>
+	<div layout:fragment="content">
+		<div id="postList">
+			<div v-for="post in list" class="card mb-4 my-4">
+				<div class="card-body">
+					<h2 class="card-title">{{ post.subject }}</h2>
+					<p class="card-text">{{ post.contents }}</p>
+					<a href="#" class="btn btn-primary">Read More &rarr;</a>
+				</div>
+				<div class="card-footer text-muted">
+					{{ post.regDate }} by <a href="#">{{ post.regUser }}</a>
+				</div>
+			</div>
+			<!-- Pagination -->
+			<ul class="pagination justify-content-center mb-4">
+				<li class="page-item" v-bind:class="{disabled : first }"><a class="page-link" v-on:click="getPrevPage();">&larr;Older</a></li>
+				<li class="page-item" v-bind:class="{disabled : last }"><a class="page-link" v-on:click="getNextPage();">Newer&rarr;</a></li>
+			</ul>
+		</div>	
+	</div>
+	<th:block layout:fragment="bodyScript">
+		<script type="text/javascript">
+			var postList = new Vue({
+			  	el: '#postList',
+			  	data: {
+			  		list: [],
+			  		baseUrl: '/blog/post/axios-list',
+			  		page: 0,
+			  		size: 3,
+			  		last: false,
+					first: true
+			  	},
+			  	methods: {
+			  		getList() {
+			  			 axios.get(this.baseUrl + '?page=' + this.page + '&size=' + this.size)
+			  	        .then(response => {
+							this.list = response.data.content;
+							this.page = response.data.number;
+							this.last = response.data.last;
+							this.first = response.data.first;
+							
+							console.log(response.data);
+			  	        })
+			  	        .catch(response => {
+			  	        	alert(response);
+			  	        });	
+			  		},
+			  		getNextPage() {
+			  			this.page += 1;
+			  			this.getList();
+			  		},
+			  		getPrevPage() {
+			  			this.page -= 1;
+			  			this.getList();
+			  		}
+			  	},
+		  	 	created () {
+			  	    this.getList();
+			  	}
+			})
+		</script>
+	</th:block>
+</html>

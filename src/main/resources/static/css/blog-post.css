@@ -19,3 +19,7 @@ body {
 		display: none;
 	}
 }
+
+.page-link {
+	cursor: pointer;
+}
