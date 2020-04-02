@@ -46,36 +46,36 @@
 			  		}
 			  	},
 			  	methods: {
-			  		getList() {
+			  		getList: function() {
+			  			 var vm = this;
 			  			 axios.get(this.baseUrl + '?page=' + this.page + '&size=' + this.size)
-			  	        .then(response => {
-							this.list = response.data.content;
-							this.page = response.data.number;
-							this.last = response.data.last;
-							this.first = response.data.first;
-							
+			  	        .then(function(response) {
+			  	        	vm.list = response.data.content;
+			  	        	vm.page = response.data.number;
+			  	        	vm.last = response.data.last;
+			  	        	vm.first = response.data.first;
 							console.log(response.data);
 			  	        })
-			  	        .catch(e => {
+			  	        .catch(function(e) {
 			  	        	console.warn('error!!! :' + e);
 			  	        });	
 			  		},
-			  		getNextPage() {
+			  		getNextPage: function() {
 			  			this.page += 1;
 			  			this.getList();
 			  		},
-			  		getPrevPage() {
+			  		getPrevPage: function() {
 			  			this.page -= 1;
 			  			this.getList();
 			  		},
-			  		readMore(blogPostSeq) {
+			  		readMore: function(blogPostSeq) {
 			  			location.href = '/blog/post/detail/' + blogPostSeq;
 			  		}
 			  	},
-		  	 	created () {
+		  	 	created: function() {
 			  	    this.getList();
 			  	}
-			})
+			});
 		</script>
 	</th:block>
 </html>
