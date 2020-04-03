@@ -23,6 +23,7 @@ body {
 .page-link {
 	cursor: pointer;
 }
+
 .post-list-content {
 	text-overflow: ellipsis;
     overflow: hidden;
