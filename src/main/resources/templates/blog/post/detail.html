@@ -8,7 +8,7 @@
 	</th:block>
 	<div layout:fragment="content">
 		<!-- Post Content Column -->
-		<div class="col-lg-8">
+		<div class="">
 			<!-- Title -->
 			<h1 class="mt-4" th:text="${blogPost.subject}"></h1>
 			<!-- Author -->
@@ -20,8 +20,8 @@
 			<p th:text="${#dates.format(blogPost.regDate, 'yyyy. MM. dd')}"></p>
 			<hr>
 			<!-- Post Content -->
-			<p th:text="${blogPost.contents}">
-			</p>
+			<pre th:utext="${blogPost.contents}">
+			</pre>
 	
 <!-- 			<!-- Comments Form --> 
 <!-- 			<div class="card my-4"> -->

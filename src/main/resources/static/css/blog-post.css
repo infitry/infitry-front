@@ -23,3 +23,9 @@ body {
 .page-link {
 	cursor: pointer;
 }
+.post-list-content {
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 50px;
+}

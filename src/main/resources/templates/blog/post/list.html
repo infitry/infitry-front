@@ -11,7 +11,7 @@
 			<div v-for="post in list" class="card mb-4 my-4">
 				<div class="card-body">
 					<h2 class="card-title">{{ post.subject }}</h2>
-					<p class="card-text">{{ post.contents }}</p>
+					<pre class="card-text post-list-content" v-html="post.contents"></pre>
 					<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);" class="btn btn-primary">Read More &rarr;</a>
 				</div>
 				<div class="card-footer text-muted">
