@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.infitry.base.component.BlogComponent;
@@ -22,7 +23,8 @@ public class BlogController {
 	BlogComponent blogComponent;
 	
 	@RequestMapping(value = "/post/list")
-	public String list(Model model, long blogPostCategorySeq) {
+	public String list(Model model, 
+			@RequestParam(value="blogPostCategorySeq", required=false, defaultValue="0") long blogPostCategorySeq) {
 		model.addAttribute("blogPostCategorySeq", blogPostCategorySeq);
 		return "blog/post/list";
 	}
