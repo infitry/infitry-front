@@ -12,14 +12,14 @@
 				<div class="card-body">
 					<h2 class="card-title">{{ post.subject }}</h2>
 					<pre class="card-text post-list-content" v-html="post.contents"></pre>
-					<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);" class="btn btn-primary">Read More &rarr;</a>
+					<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);" class="btn btn-primary">상세보기 &rarr;</a>
 				</div>
 				<div class="card-footer text-muted">
 					{{ post.regDate | dateFormat}} by <a href="#">{{ post.regUser }}</a>
 				</div>
 			</div>
 			<!-- Pagination -->
-			<ul class="pagination justify-content-center mb-4">
+			<ul id="pagination" class="pagination justify-content-center mb-4" style="display: none;">
 				<li class="page-item" v-bind:class="{disabled : first }"><a class="page-link" v-on:click="getPrevPage();">&larr;Older</a></li>
 				<li class="page-item" v-bind:class="{disabled : last }"><a class="page-link" v-on:click="getNextPage();">Newer&rarr;</a></li>
 			</ul>
@@ -48,13 +48,18 @@
 			  	methods: {
 			  		getList: function() {
 			  			 var vm = this;
-			  			 axios.get(this.baseUrl + '?page=' + this.page + '&size=' + this.size)
-			  	        .then(function(response) {
+			  			 axios.get(this.baseUrl + '?page=' + this.page + '&size=' + this.size, {
+			  				 headers : { 
+			  					 'requestType': 'axios'
+			  				 }
+			  			}).then(function(response) {
 			  	        	vm.list = response.data.content;
 			  	        	vm.page = response.data.number;
 			  	        	vm.last = response.data.last;
 			  	        	vm.first = response.data.first;
-							console.log(response.data);
+			  	        	if (!vm.last) {
+			  	        		$('#pagination').show();
+			  	        	}
 			  	        })
 			  	        .catch(function(e) {
 			  	        	console.warn('error!!! :' + e);

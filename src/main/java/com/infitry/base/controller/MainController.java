@@ -14,10 +14,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/")
 	public String main(HttpSession session) {
+		logger.info("welcome infitry");
 		
-		logger.info("My Session ID : " + session.getId());
-		logger.info("My Login ID : " + session.getAttribute("loginId"));
-	
 		return "index";
 	}
 }

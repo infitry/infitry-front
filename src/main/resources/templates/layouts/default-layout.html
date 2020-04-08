@@ -25,30 +25,25 @@
 	
 					<!-- Categories Widget -->
 					<div class="card my-4">
-						<h5 class="card-header">Categories</h5>
+						<h5 class="card-header">카테고리</h5>
 						<div class="card-body">
 							<div class="row">
 								<ul class="list-unstyled mb-0 pl-1">
-									<li><a href="#">spring boot</a></li>
-									<li><a href="#">JPA</a></li>
-									<li><a href="#">thymeleaf</a></li>
-									<li><a href="#">ubuntu</a></li>
-									<li><a href="#">docker</a></li>
-									<li><a href="#">vue.js</a></li>
-									<li><a href="#">github</a></li>
-									<li><a href="#">dockerhub</a></li>
-									<li><a href="#">Vue.js</a></li>
+									<li th:each="category : ${categoryList}">
+										<a th:href="@{/blog/post/list(blogPostCategorySeq=${category.blogPostCategorySeq})}" 
+										th:text="${category.name}"></a>
+									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 	
 					<!-- Side Widget -->
-					<div class="card my-4">
-						<h5 class="card-header">Side Widget</h5>
-						<div class="card-body">You can put anything you want inside
-							of these side widgets. They are easy to use, and feature the new
-							Bootstrap 4 card containers!</div>
+<!-- 					<div class="card my-4"> -->
+<!-- 						<h5 class="card-header">Side Widget</h5> -->
+<!-- 						<div class="card-body">You can put anything you want inside -->
+<!-- 							of these side widgets. They are easy to use, and feature the new -->
+<!-- 							Bootstrap 4 card containers!</div> -->
 					</div>
 				</div>
 			</div>
