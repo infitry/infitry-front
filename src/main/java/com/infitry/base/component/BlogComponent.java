@@ -6,7 +6,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,16 +40,14 @@ public class BlogComponent {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public RestResponsePage getBlogList(Pageable paging) {
+	public RestResponsePage getBlogList(BlogPost blogPost) {
 		RestResponsePage blogPostList = null;
 		try {
 			/* paging 처리를 위한 Pageable의 getPageSize이용, getPageNumber 이용
 			 * paramter명으로 size, page 사용
 			 * Page<Object> 형식으로 응답을 받기위해 Custom PageImpl생성. 
 			 */
-			blogPostList = blogClient.getForObject(blogUrl + "/blog/post/list?size=" + paging.getPageSize() 
-				+ "&page=" + paging.getPageNumber(), RestResponsePage.class);
-			logger.info(blogPostList.toString());
+			blogPostList = blogClient.postForObject(blogUrl + "/blog/post/list", blogPost, RestResponsePage.class);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			logger.error("BLOG SERVICE NOT AVAILABLE...!!!");

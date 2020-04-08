@@ -32,6 +32,7 @@
 			  	data: {
 			  		list: [],
 			  		baseUrl: '/blog/post/axios-list',
+			  		categorySeq: [[${blogPostCategorySeq}]],
 			  		page: 0,
 			  		size: 3,
 			  		last: false,
@@ -48,8 +49,13 @@
 			  	methods: {
 			  		getList: function() {
 			  			 var vm = this;
-			  			 axios.get(this.baseUrl + '?page=' + this.page + '&size=' + this.size, {
-			  				 headers : { 
+			  			 axios.get(this.baseUrl, {
+			  				 params: {
+			  					pageNumber: this.page,
+			  					pageSize: this.size,
+			  					blogPostCategorySeq: this.categorySeq
+			  				 },
+			  				 headers: { 
 			  					 'requestType': 'axios'
 			  				 }
 			  			}).then(function(response) {

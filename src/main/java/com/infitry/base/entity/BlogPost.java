@@ -12,7 +12,10 @@ import lombok.Data;
  */
 @Data
 public class BlogPost {
+	private int pageSize;
+	private int pageNumber;
 	private long blogPostSeq;
+	private long blogPostCategorySeq;
 	private PostCategory postCategory;
 	private String subject;
 	private String contents;

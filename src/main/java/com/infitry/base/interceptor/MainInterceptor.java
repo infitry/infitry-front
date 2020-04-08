@@ -44,8 +44,12 @@ public class MainInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		if (!isAjax(request)) {
-			//카테고리 목록을 불러온다.
-			modelAndView.addObject("categoryList", blogComponent.getCategoryList());
+			try {
+				//카테고리 목록을 불러온다.
+				modelAndView.addObject("categoryList", blogComponent.getCategoryList());
+			} catch (Exception e) {
+				logger.info("interceptor error request URI - " + request.getRequestURI());
+			}
 		}
 		
 //		super.postHandle(request, response, handler, modelAndView);
