@@ -11,17 +11,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Home</a>
+					<li class="nav-item" th:classappend="${#httpServletRequest.requestURI} == '/' ? 'active' : ''">
+						<a class="nav-link" href="/">Home</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">소개</a>
+					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/intro')} > -1 ? 'active' : ''" >
+						<a class="nav-link" href="/blog/intro">소개</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/post')} > -1 ? 'active' : ''">
 						<a class="nav-link" href="/blog/post/list">개발관련 포스팅</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">문의하기</a>
+					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/inquiry')} > -1 ? 'active' : ''">
+						<a class="nav-link" href="/blog/inquiry">문의하기</a>
 					</li>
 				</ul>
 			</div>

@@ -30,3 +30,12 @@ body {
     white-space: nowrap;
     height: 50px;
 }
+
+.btn-wrap {
+	float: right;
+}
+
+.list-null {
+	font-size: 2rem;
+	font-weight: bold;
+}

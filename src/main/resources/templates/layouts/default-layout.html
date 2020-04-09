@@ -11,11 +11,11 @@
 	
 					<!-- Search Widget -->
 					<div class="card my-4">
-						<h5 class="card-header">Search</h5>
+						<h5 class="card-header">검색</h5>
 						<div class="card-body">
 							<div class="input-group">
 								<input type="text" class="form-control"
-									placeholder="Search for..."> <span
+									placeholder="검색어 입력..."> <span
 									class="input-group-btn">
 									<button class="btn btn-secondary" type="button">Go!</button>
 								</span>
@@ -29,6 +29,7 @@
 						<div class="card-body">
 							<div class="row">
 								<ul class="list-unstyled mb-0 pl-1">
+									<li><a href="/blog/post/list">ALL</a></li>
 									<li th:each="category : ${categoryList}">
 										<a th:href="@{/blog/post/list(blogPostCategorySeq=${category.blogPostCategorySeq})}" 
 										th:text="${category.name}"></a>
@@ -37,18 +38,10 @@
 							</div>
 						</div>
 					</div>
-	
-					<!-- Side Widget -->
-<!-- 					<div class="card my-4"> -->
-<!-- 						<h5 class="card-header">Side Widget</h5> -->
-<!-- 						<div class="card-body">You can put anything you want inside -->
-<!-- 							of these side widgets. They are easy to use, and feature the new -->
-<!-- 							Bootstrap 4 card containers!</div> -->
-					</div>
 				</div>
 			</div>
-			<!-- /.row -->
 		</div>
+		<!-- /.row -->
 		<footer th:replace="layouts/fragments/footer :: footerFragment"></footer>
 		<script type="text/javascript">
 			loadProgressBar();	//axios progress bar

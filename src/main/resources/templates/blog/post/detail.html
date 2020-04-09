@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layouts/default-layout">
+	layout:decorator="layouts/no-side-bar-layout">
 	<th:block layout:fragment="css">
 	</th:block>
 	<th:block layout:fragment="script">
@@ -20,7 +20,7 @@
 			<p th:text="${#dates.format(blogPost.regDate, 'yyyy. MM. dd')}"></p>
 			<hr>
 			<!-- Post Content -->
-			<pre th:utext="${blogPost.contents}">
+			<pre class="detail-contents" th:utext="${blogPost.contents}">
 			</pre>
 	
 <!-- 			<!-- Comments Form --> 
@@ -86,10 +86,19 @@
 <!-- 				</div> -->
 <!-- 			</div> -->
 		</div>
+		<div class="mb-2 btn-wrap">
+			<a href="javascript:;" th:attr="onclick=|goList(${blogPostCategorySeq})|" class="btn btn-primary">목록으로</a>
+		</div>
 	</div>
 	<th:block layout:fragment="bodyScript">
 		<script type="text/javascript">
-			
+			function goList(categorySeq) {
+				var url = '/blog/post/list';
+				if (categorySeq) {
+					url += '?blogPostCategorySeq=' + categorySeq;
+				}
+				location.href = url;
+			}
 		</script>
 	</th:block>
 </html>

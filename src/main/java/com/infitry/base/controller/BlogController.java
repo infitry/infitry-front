@@ -42,8 +42,10 @@ public class BlogController {
 	}
 	
 	@RequestMapping(value = "/post/detail/{blogPostSeq}")
-	public String detail(Model model, @PathVariable long blogPostSeq) {
+	public String detail(Model model, @PathVariable long blogPostSeq,
+			@RequestParam(value="blogPostCategorySeq", required=false, defaultValue="0") long blogPostCategorySeq) {
 		model.addAttribute("blogPost", blogComponent.getBlogDetail(blogPostSeq));
+		model.addAttribute("blogPostCategorySeq", blogPostCategorySeq);
 		return "blog/post/detail";
 	}
 }

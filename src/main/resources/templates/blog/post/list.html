@@ -8,6 +8,9 @@
 	</th:block>
 	<div layout:fragment="content">
 		<div id="postList">
+			<div class="list-null" id="listNull" style="display: none;">
+				<p>자료가 존재하지 않습니다.</p>
+			</div>
 			<div v-for="post in list" class="card mb-4 my-4">
 				<div class="card-body">
 					<h2 class="card-title">{{ post.subject }}</h2>
@@ -66,6 +69,11 @@
 			  	        	if (!vm.last) {
 			  	        		$('#pagination').show();
 			  	        	}
+			  	        	if (response.data.totalElements == 0) {
+			  	        		$('#listNull').show();
+			  	        	} else {
+			  	        		$('#listNull').hide();
+			  	        	}
 			  	        })
 			  	        .catch(function(e) {
 			  	        	console.warn('error!!! :' + e);
@@ -80,7 +88,11 @@
 			  			this.getList();
 			  		},
 			  		readMore: function(blogPostSeq) {
-			  			location.href = '/blog/post/detail/' + blogPostSeq;
+			  			var detailUrl = '/blog/post/detail/' + blogPostSeq;
+			  			if (this.categorySeq) {
+			  				detailUrl += '?blogPostCategorySeq=' + this.categorySeq;
+			  			}
+			  			location.href = detailUrl;
 			  		}
 			  	},
 		  	 	created: function() {
