@@ -4,8 +4,8 @@
 	layout:decorator="layouts/no-side-bar-layout">
 	<th:block layout:fragment="seo">
 		<meta name="keywords" content="springBoot, java, docker, ubuntu, vue.js, thymeleaf, gcp" />
-		<meta name="title" content="${blogPost.subject}" />
-		<meta name="description" content="${blogPost.subject}" />
+		<meta name="title" th:content="${blogPost.subject}" />
+		<meta name="description" th:content="${blogPost.description}" />
 		<meta name="robots" content="index,follow" />
 	</th:block>
 	<th:block layout:fragment="css">

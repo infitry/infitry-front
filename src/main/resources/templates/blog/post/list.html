@@ -20,7 +20,7 @@
 			<div v-for="post in list" class="card mb-4 my-4">
 				<div class="card-body">
 					<h2 class="card-title">{{ post.subject }}</h2>
-					<pre class="card-text post-list-content" v-html="post.contents"></pre>
+					<p class="card-text post-list-content">{{ post.description }}</p>
 					<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);" class="btn btn-primary">상세보기 &rarr;</a>
 				</div>
 				<div class="card-footer text-muted">
