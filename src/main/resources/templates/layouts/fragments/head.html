@@ -5,12 +5,22 @@
 <head th:fragment="headFragment">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO -->
+    <th:block layout:fragment="seo"></th:block>
+	<meta property="og:type" content="website">
+    <meta property="og:title" content="infitry 개발 블로그">
+    <meta property="og:description" content="springBoot, java, docker, ubuntu, vue.js, thymeleaf, gcp">
+    <meta property="og:image" content="http://www.infitry.com/">
+    <meta property="og:url" content="http://www.infitry.com/">
+	<!-- FAVICON -->    
     <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/css/axios/nprogress.css" />
     <link rel="stylesheet" type="text/css" href="/css/blog-post.css">
-    <!-- 컨텐츠페이지의 CSS 영역이 들어감 -->
+    <!-- 컨텐츠페이지의 CSS -->
     <th:block layout:fragment="css"></th:block>
+    <!-- JS -->
     <script type="text/javascript" src="/js/jquery-3.4.1.js"></script> <!-- Jquery 3.4.1 -->
     <script type="text/javascript" src="/js/bootstrap/bootstrap.bundle.min.js"></script> <!-- bootstrap -->
     <script type="text/javascript" src="/js/vue-2.5.16.js"></script> <!-- vue.js 2.5.16 -->
@@ -19,6 +29,7 @@
     <script type="text/javascript" src="/js/axios-0.19.2.min.js"></script> <!-- axios-0.19.2 -->
     <script type="text/javascript" src="/js/axios/nprogress.js"></script>
     <script type="text/javascript" src="/js/moment.min.js"></script> <!-- moment -->
+    <!-- 컨텐츠페이지의 JS -->
     <th:block layout:fragment="script"></th:block>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163156770-1"></script>
