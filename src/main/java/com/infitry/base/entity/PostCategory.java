@@ -12,8 +12,8 @@ import lombok.Data;
  */
 @Data
 public class PostCategory {
-	private long blogPostCategorySeq;
-	private String name;
-	private String regUser;
-	private Date regDate;
+	private long blogPostCategorySeq;	//카테고리 일련번호
+	private String name;				//카테고리명
+	private String regUser;				//생성자
+	private Date regDate;				//생성일
 }

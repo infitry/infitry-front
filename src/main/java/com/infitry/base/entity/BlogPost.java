@@ -12,14 +12,14 @@ import lombok.Data;
  */
 @Data
 public class BlogPost {
-	private int pageSize;
-	private int pageNumber;
-	private long blogPostSeq;
-	private long blogPostCategorySeq;
-	private PostCategory postCategory;
-	private String subject;
-	private String description;
-	private String contents;
-	private String regUser;
-	private Date regDate;
+	private int pageSize;			//페이지 사이즈
+	private int pageNumber;			//페이지 번호
+	private long blogPostSeq;		//포스트 일련번호
+	private long blogPostCategorySeq;	//포스트 카테고리 일련번호
+	private PostCategory postCategory;	//포스트 카테고리
+	private String subject;				//제목
+	private String description;			//간단설명
+	private String contents;			//내용
+	private String regUser;				//생성자
+	private Date regDate;				//생성일
 }

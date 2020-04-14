@@ -19,6 +19,11 @@ public class BlogController {
 	@Autowired
 	BlogComponent blogComponent;
 	
+	/**
+	 * @since 2020. 4. 14.
+	 * @author leesw
+	 * @description : 포스트 페이지
+	 */
 	@RequestMapping(value = "/post/list")
 	public String list(Model model, 
 			@RequestParam(value="blogPostCategorySeq", required=false, defaultValue="0") long blogPostCategorySeq) {
@@ -29,7 +34,7 @@ public class BlogController {
 	/**
 	 * @since 2020. 4. 2.
 	 * @author leesw
-	 * @description : post list 반환 axios 컨트롤러
+	 * @description : post list 반환 axios요청
 	 */
 	@ResponseBody
 	@SuppressWarnings("rawtypes")
@@ -38,11 +43,38 @@ public class BlogController {
 		return blogComponent.getBlogList(blogPost);
 	}
 	
+	/**
+	 * @since 2020. 4. 14.
+	 * @author leesw
+	 * @description : post 상세
+	 */
 	@RequestMapping(value = "/post/detail/{blogPostSeq}")
 	public String detail(Model model, @PathVariable long blogPostSeq,
 			@RequestParam(value="blogPostCategorySeq", required=false, defaultValue="0") long blogPostCategorySeq) {
 		model.addAttribute("blogPost", blogComponent.getBlogDetail(blogPostSeq));
 		model.addAttribute("blogPostCategorySeq", blogPostCategorySeq);
 		return "blog/post/detail";
+	}
+	
+	/**
+	 * @since 2020. 4. 14.
+	 * @author leesw
+	 * @description : 경력 및 소개
+	 */
+	@RequestMapping(value = "/about")
+	public String about(Model model) {
+		
+		return "blog/about/about.html";
+	}
+	
+	/**
+	 * @since 2020. 4. 14.
+	 * @author leesw
+	 * @description : 문의하기
+	 */
+	@RequestMapping(value = "/question")
+	public String question(Model model) {
+		
+		return "blog/question/question.html";
 	}
 }

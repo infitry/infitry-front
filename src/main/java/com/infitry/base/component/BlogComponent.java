@@ -29,6 +29,11 @@ public class BlogComponent {
 	
 	RestTemplate blogClient = new RestTemplate();
 	
+	/**
+	 * @since 2020. 4. 14.
+	 * @author leesw
+	 * @description : 카테고리 목록
+	 */
 	public List<PostCategory> getCategoryList() {
 		PostCategory[] postCategoryList = null;
 		try {
@@ -39,6 +44,11 @@ public class BlogComponent {
 		return Arrays.asList(postCategoryList);
 	}
 	
+	/**
+	 * @since 2020. 4. 14.
+	 * @author leesw
+	 * @description : 블로그 목록
+	 */
 	@SuppressWarnings("rawtypes")
 	public RestResponsePage getBlogList(BlogPost blogPost) {
 		RestResponsePage blogPostList = null;
@@ -55,6 +65,11 @@ public class BlogComponent {
 		return blogPostList;
 	}
 	
+	/**
+	 * @since 2020. 4. 14.
+	 * @author leesw
+	 * @description : 블로그 상세
+	 */
 	public BlogPost getBlogDetail(long blogPostSeq) {
 		BlogPost blogPost = null;
 		try {

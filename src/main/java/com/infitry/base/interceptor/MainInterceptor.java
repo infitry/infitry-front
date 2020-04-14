@@ -51,8 +51,6 @@ public class MainInterceptor extends HandlerInterceptorAdapter {
 				logger.info("interceptor error request URI - " + request.getRequestURI());
 			}
 		}
-		
-//		super.postHandle(request, response, handler, modelAndView);
 	}
 	
 	

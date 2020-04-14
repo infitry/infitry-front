@@ -12,9 +12,9 @@ import lombok.Data;
  */
 @Data
 public class User {
-	private long userSeq;
-	private String id;
-	private String password;
-	private String name;
-	private Date regDate;
+	private long userSeq;	//사용자 일련번호
+	private String id;		//아이디
+	private String password;//비밀번호
+	private String name;	//유저명
+	private Date regDate;	//생성일
 }

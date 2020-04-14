@@ -14,13 +14,13 @@
 					<li class="nav-item" th:classappend="${#httpServletRequest.requestURI} == '/' ? 'active' : ''">
 						<a class="nav-link" href="/">Home</a>
 					</li>
-					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/intro')} > -1 ? 'active' : ''" >
-						<a class="nav-link" href="/blog/intro">About</a>
+					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/about')} > -1 ? 'active' : ''" >
+						<a class="nav-link" href="/blog/about">About</a>
 					</li>
 					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/post')} > -1 ? 'active' : ''">
 						<a class="nav-link" href="/blog/post/list">Blog</a>
 					</li>
-					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/inquiry')} > -1 ? 'active' : ''">
+					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/question')} > -1 ? 'active' : ''">
 						<a class="nav-link" href="/blog/question">Question</a>
 					</li>
 				</ul>
