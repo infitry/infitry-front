@@ -39,3 +39,8 @@ body {
 	font-size: 2rem;
 	font-weight: bold;
 }
+
+.detail-contents p {
+    white-space: pre-line;
+}
+}
