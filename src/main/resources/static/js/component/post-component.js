@@ -1,12 +1,12 @@
 Vue.component('post-component', {
 	template: '#postTemplate',
+	props: ['size'],
 	data: function() {
 		return {
 			list: [],
 	  		baseUrl: '/blog/post/axios-list',
 	  		categorySeq: $('#blogPostCategorySeq').val(),
 	  		page: 0,
-	  		size: 3,
 	  		last: false,
 			first: true
 		}	

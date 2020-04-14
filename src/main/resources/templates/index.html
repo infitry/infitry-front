@@ -14,7 +14,7 @@
 	</th:block>
 	<div layout:fragment="content">
 		<div id="postList" class="card my-4">
-			<post-component></post-component><!-- component location -->
+			<post-component v-bind:size="size"></post-component><!-- component location -->
 		</div>
 		
 		<div id="commentList" class="card my-4">
@@ -53,7 +53,10 @@
 		<script type="text/javascript" src="/js/component/post-component.js"></script> <!-- post component -->
 		<script type="text/javascript">
 			new Vue({
-				el: '#postList'
+				el: '#postList',
+				data: {
+					size: 5
+				}
 			});
 		</script>
 	</th:block>
