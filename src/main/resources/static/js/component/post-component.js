@@ -1,11 +1,10 @@
 Vue.component('post-component', {
 	template: '#postTemplate',
-	props: ['size'],
+	props: ['size', 'categorySeq'],
 	data: function() {
 		return {
 			list: [],
 	  		baseUrl: '/blog/post/axios-list',
-	  		categorySeq: $('#blogPostCategorySeq').val(),
 	  		page: 0,
 	  		last: false,
 			first: true
@@ -66,6 +65,8 @@ Vue.component('post-component', {
  		}
 	},
 	created: function() {
+		console.log(this.size);
+		console.log(this.categorySeq);
 		this.getList();
 	}
 });

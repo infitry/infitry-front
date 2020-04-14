@@ -13,9 +13,8 @@
 	<th:block layout:fragment="script">
 	</th:block>
 	<div layout:fragment="content">
-		<input type="hidden" id="blogPostCategorySeq" th:value="${blogPostCategorySeq}"/>
 		<div id="postList">
-			<post-component v-bind:size="size"></post-component><!-- component location -->
+			<post-component v-bind:size="size" v-bind:category-seq="categorySeq"></post-component><!-- component location -->
 		</div>	
 	</div>
 	<th:block layout:fragment="bodyScript">
@@ -46,7 +45,8 @@
 			new Vue({
 			  	el: '#postList',
 			  	data: {
-			  		size: 3
+			  		size: 3,
+			  		categorySeq: [[${blogPostCategorySeq}]]
 			  	}
 			});
 		</script>
