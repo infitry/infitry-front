@@ -13,97 +13,38 @@
 	<th:block layout:fragment="script">
 	</th:block>
 	<div layout:fragment="content">
+		<input type="hidden" id="blogPostCategorySeq" th:value="${blogPostCategorySeq}"/>
 		<div id="postList">
-			<div class="list-null" id="listNull" style="display: none;">
-				<p>자료가 존재하지 않습니다.</p>
-			</div>
-			<div v-for="post in list" class="card mb-4 my-4">
-				<div class="card-body">
-					<h2 class="card-title">{{ post.subject }}</h2>
-					<p class="card-text post-list-content">{{ post.description }}</p>
-					<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);" class="btn btn-primary">상세보기 &rarr;</a>
-				</div>
-				<div class="card-footer text-muted">
-					{{ post.regDate | dateFormat}} by <a href="#">{{ post.regUser }}</a>
-				</div>
-			</div>
-			<!-- Pagination -->
-			<ul id="pagination" class="pagination justify-content-center mb-4" style="display: none;">
-				<li class="page-item" v-bind:class="{disabled : first }"><a class="page-link" v-on:click="getPrevPage();">&larr;Older</a></li>
-				<li class="page-item" v-bind:class="{disabled : last }"><a class="page-link" v-on:click="getNextPage();">Newer&rarr;</a></li>
-			</ul>
+			<post-component></post-component><!-- component location -->
 		</div>	
 	</div>
 	<th:block layout:fragment="bodyScript">
+		<script type="text/x-template" id="postTemplate">
+			<div>
+				<div class="list-null" id="listNull" style="display: none;">
+					<p>자료가 존재하지 않습니다.</p>
+				</div>
+				<div v-for="post in list" class="card mb-4 my-4">
+					<div class="card-body">
+						<h2 class="card-title">{{ post.subject }}</h2>
+						<p class="card-text post-list-content">{{ post.description }}</p>
+						<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);" class="btn btn-primary">상세보기 &rarr;</a>
+					</div>
+					<div class="card-footer text-muted">
+						{{ post.regDate | dateFormat}} by <a href="#">{{ post.regUser }}</a>
+					</div>
+				</div>
+				<!-- Pagination -->
+				<ul id="pagination" class="pagination justify-content-center mb-4" style="display: none;">
+					<li class="page-item" v-bind:class="{disabled : first }"><a class="page-link" v-on:click="getPrevPage();">&larr;Older</a></li>
+					<li class="page-item" v-bind:class="{disabled : last }"><a class="page-link" v-on:click="getNextPage();">Newer&rarr;</a></li>
+				</ul>
+			</div>
+		</script>
+		<script type="text/javascript" src="/js/component/post-component.js"></script> <!-- post component -->
 		<script type="text/javascript">
-			var postList = new Vue({
-			  	el: '#postList',
-			  	data: {
-			  		list: [],
-			  		baseUrl: '/blog/post/axios-list',
-			  		categorySeq: [[${blogPostCategorySeq}]],
-			  		page: 0,
-			  		size: 3,
-			  		last: false,
-					first: true
-			  	},
-			  	filters: {
-			  		dateFormat: function(value) {
-			  			if (!value) {
-			  				return '';
-			  			}
-			  			return moment(value).format("YYYY .MM .DD");
-			  		}
-			  	},
-			  	methods: {
-			  		getList: function() {
-			  			 var vm = this;
-			  			 axios.get(this.baseUrl, {
-			  				 params: {
-			  					pageNumber: this.page,
-			  					pageSize: this.size,
-			  					blogPostCategorySeq: this.categorySeq
-			  				 },
-			  				 headers: { 
-			  					 'requestType': 'axios'
-			  				 }
-			  			}).then(function(response) {
-			  	        	vm.list = response.data.content;
-			  	        	vm.page = response.data.number;
-			  	        	vm.last = response.data.last;
-			  	        	vm.first = response.data.first;
-			  	        	if (!vm.last) {
-			  	        		$('#pagination').show();
-			  	        	}
-			  	        	if (response.data.totalElements == 0) {
-			  	        		$('#listNull').show();
-			  	        	} else {
-			  	        		$('#listNull').hide();
-			  	        	}
-			  	        })
-			  	        .catch(function(e) {
-			  	        	console.warn('error!!! :' + e);
-			  	        });	
-			  		},
-			  		getNextPage: function() {
-			  			this.page += 1;
-			  			this.getList();
-			  		},
-			  		getPrevPage: function() {
-			  			this.page -= 1;
-			  			this.getList();
-			  		},
-			  		readMore: function(blogPostSeq) {
-			  			var detailUrl = '/blog/post/detail/' + blogPostSeq;
-			  			if (this.categorySeq) {
-			  				detailUrl += '?blogPostCategorySeq=' + this.categorySeq;
-			  			}
-			  			location.href = detailUrl;
-			  		}
-			  	},
-		  	 	created: function() {
-			  	    this.getList();
-			  	}
+			new Vue({
+			  	el: '#postList'
 			});
 		</script>
 	</th:block>

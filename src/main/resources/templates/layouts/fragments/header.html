@@ -15,13 +15,13 @@
 						<a class="nav-link" href="/">Home</a>
 					</li>
 					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/intro')} > -1 ? 'active' : ''" >
-						<a class="nav-link" href="/blog/intro">소개</a>
+						<a class="nav-link" href="/blog/intro">About</a>
 					</li>
 					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/post')} > -1 ? 'active' : ''">
-						<a class="nav-link" href="/blog/post/list">개발관련 포스팅</a>
+						<a class="nav-link" href="/blog/post/list">Blog</a>
 					</li>
 					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/inquiry')} > -1 ? 'active' : ''">
-						<a class="nav-link" href="/blog/inquiry">문의하기</a>
+						<a class="nav-link" href="/blog/question">Question</a>
 					</li>
 				</ul>
 			</div>
