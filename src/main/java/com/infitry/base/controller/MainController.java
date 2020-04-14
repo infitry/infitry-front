@@ -7,6 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * @since 2020. 4. 14.
+ * @author leesw
+ * @mail leesw504@gmail.com
+ * @description : main Controller
+ */
 @Controller
 public class MainController {
 	
@@ -14,8 +20,6 @@ public class MainController {
 	
 	@RequestMapping(value = "/")
 	public String main(HttpSession session) {
-		logger.info("welcome infitry");
-		
 		return "index";
 	}
 }

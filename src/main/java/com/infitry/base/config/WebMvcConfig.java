@@ -31,6 +31,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		return new MainInterceptor();
 	}
 	
+	/**
+     * @since 2020. 4. 14.
+     * @author leesw
+     * @description : 인터셉터 추가.
+     */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(mainInterceptor())
@@ -42,6 +47,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 			.excludePathPatterns("/favicon/**");
 	}
 	
+    /**
+     * @since 2020. 4. 14.
+     * @author leesw
+     * @description : JSESSION 제거, REDIS 세션을 사용하기 때문에 불필요
+     */
     @Bean
     public ServletContextInitializer clearJsession() {
         return new ServletContextInitializer() {
