@@ -3,6 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layouts/no-side-bar-layout">
 	<th:block layout:fragment="seo">
+		<title th:text="${blogPost.subject}"></title>
 		<meta name="keywords" content="springBoot, java, docker, ubuntu, vue.js, thymeleaf, gcp" />
 		<meta name="title" th:content="${blogPost.subject}" />
 		<meta name="description" th:content="${blogPost.description}" />
