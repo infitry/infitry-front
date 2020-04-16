@@ -39,9 +39,12 @@ body {
 	font-size: 2rem;
 	font-weight: bold;
 }
-
+/* 포스트 상세 */
 .detail-contents p {
     white-space: pre-line;
+}
+.detail-contents img {
+	max-width: 100%;
 }
 
 .server-achi {
