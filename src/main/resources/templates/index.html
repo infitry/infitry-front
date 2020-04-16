@@ -18,11 +18,12 @@
 		</div>
 		
 		<div id="commentList" class="card my-4">
-			<h5 class="card-header">최근 댓글</h5>
+			<h5 class="card-header">서버 구조</h5>
 			<div class="card-body">
-				<div class="my-2 font-weight-bold">
-					<a href="javascript:;" v-on:click="readMore();">오픈 준비중!!</a>
-				</div>
+				<img class="server-achi" src="/images/server_achi.png" />
+<!-- 				<div class="my-2 font-weight-bold"> -->
+<!-- 					<a href="javascript:;" v-on:click="readMore();">오픈 준비중!!</a> -->
+<!-- 				</div> -->
 			</div>
 		</div>
 	</div>
@@ -30,7 +31,7 @@
 		<!-- post template -->
 		<script type="text/x-template" id="postTemplate">
 			<div>
-				<h5 class="card-header">블로그</h5>
+				<h5 class="card-header">최근 게시글</h5>
 				<div class="card-body">
 				<div class="my-2 font-weight-bold" v-for="post in list">
 					<a href="javascript:;" v-on:click="readMore(post.blogPostSeq);">{{ post.subject }}</a>

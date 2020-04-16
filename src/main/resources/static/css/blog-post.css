@@ -43,4 +43,7 @@ body {
 .detail-contents p {
     white-space: pre-line;
 }
+
+.server-achi {
+	max-width: 100%;
 }

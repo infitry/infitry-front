@@ -18,7 +18,7 @@
 						<a class="nav-link" href="/blog/about">About</a>
 					</li>
 					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/post')} > -1 ? 'active' : ''">
-						<a class="nav-link" href="/blog/post/list">Blog</a>
+						<a class="nav-link" href="/blog/post/list">Blogging</a>
 					</li>
 					<li class="nav-item" th:classappend="${#strings.indexOf(#httpServletRequest.requestURI, '/blog/question')} > -1 ? 'active' : ''">
 						<a class="nav-link" href="/blog/question">Question</a>
