@@ -39,6 +39,7 @@ public class BlogComponent {
 		try {
 			postCategoryList = blogClient.getForObject(blogUrl + "/blog/category/list-all", PostCategory[].class);
 		} catch (Exception e) {
+			logger.error("[ERROR] - " + e.getMessage());
 			logger.error("BLOG SERVICE NOT AVAILABLE...!!!");
 		}
 		return Arrays.asList(postCategoryList);
