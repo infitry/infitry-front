@@ -32,7 +32,7 @@
 <!-- 									<li><a class="my-1 font-weight-bold" href="/blog/post/list">ALL</a></li> -->
 									<li th:each="category : ${categoryList}">
 										<a class="my-1 font-weight-bold" th:href="@{/blog/post/list(blogPostCategorySeq=${category.blogPostCategorySeq})}" 
-										th:text="|${category.name} (${category.blogPosts.size()})|"></a>
+										th:text="|${category.name} (${category.count})|"></a>
 									</li>
 								</ul>
 							</div>
